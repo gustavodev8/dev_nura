@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+@media screen and (max-width: 992px) and (min-width: 768px) {
+
+    section#logins {
+        width: 650px;
+        height: 450px;
+
+    }
+
+    section > div#imagem {
+        float: left;
+        width: 45%;
+        height: 100%;
+        border-top-right-radius: none ;
+        border-bottom-left-radius: 15px;
+    }
+
+    section#logins > div#text {
+        padding-top: 68px;
+        padding-left: 9px;
+        float: left;
+        width: 335px;
+        padding-bottom: 70px;
+    }
+    i#senhaa {
+        position: absolute;
+        left: 305px;
+        width: 20px;
+        padding-bottom: 5px;
+        font-size: 30px;
+    }
+    i#usuarioo {
+        position: absolute;
+        left: 305px;
+        width: 20px;
+        padding-bottom: 5px;
+        font-size: 30px;
+    }
+    
+
+    section > footer > p{
+        text-align: center;
+
+    }
+    form > p {
+        padding-bottom: 15px;
+    }
+}
+    
+
