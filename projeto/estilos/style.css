@@ -29,7 +29,7 @@ section#logins {
     border-radius: 15px;
     background-color: white;
     width: 350px;
-    height: 650px;
+    height: 440px;
 
     position: absolute;
     top: 50%;
@@ -41,11 +41,11 @@ section#logins {
 section > div#imagem {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    background-image: url(../Arquitetura\ Em\ Tijolo.jpg);
+    background-image: url(../logo\ NURA.jpeg);
     background-repeat: no-repeat;
 
-    background-position: center -290px;
-    height: 250px;
+    background-position: center 200px;
+    height: 100px;
 }
 
 div#text {
@@ -53,9 +53,13 @@ div#text {
 }
 
 div#text > h1 {
-    font-size: 28px;
-    padding-top: 2px;
+    font-size: 34px;
+
     padding-bottom: 10px;
+}
+
+div#saudacao {
+    margin: 10px;
 }
 
 div#text > p {
@@ -67,16 +71,22 @@ div#text > p {
 form > p{
     text-align: center;
     display: block;
-    padding-bottom: 10px;
+    padding-bottom: 14px;
 
 }
 
-i#senhaa {
+
+/*
+
+ICONES:
+
+ i#senhaa {
     position: absolute;
     left: 12px;
     width: 20px;
     padding-bottom: 5px;
     font-size: 30px;
+    border-radius: 0
 }
 i#usuarioo {
     position: absolute;
@@ -84,38 +94,29 @@ i#usuarioo {
     width: 20px;
     padding-bottom: 5px;
     font-size: 30px;
-}
+    border-radius: 0
+} 
 
-form > p > i {
-    display: block;
-    padding-top: 2px;
-}
+*/
+
 form > p#usu {
-    
-    text-align: center;
+    text-align: left;
     display: block;
     padding-top: 17px;
+    border: none;
 
 }
-
-form > p > input#iusuario {
-    width: 250px;
-    padding: 8px;
-    text-align: center;
-    border-radius: 10px;
-    border: 0.7px solid black;
-}
-
-form > p > input#isenha {
-    width: 250px;    
-    padding: 8px;
-    text-align: center;
-    border-radius: 10px;
-    border: 0.7px solid black;
+form > p#sen {
+    
+    text-align: left;
+    display: block;
+    padding-top: 17px;
+    border: none;
+    border: 0px;
 }
 
 form > p#enviar {
-    text-align: center;
+    text-align: left;
     display: block;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -124,20 +125,44 @@ form > p#enviar {
 
 form > p > input#ienviar {
     color: white;
-    background-image: linear-gradient(210deg, #5f2c82, #49a09d);
-    width: 200px;    
+    background-image: linear-gradient(210deg, #000000, #1d1d1d);
+    width: 170px;   
     padding: 8px;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 22px;
     border: none;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.397);
 }
 
 footer {
-    padding-top: 54px;
-    text-align: center;
+    padding-top: 5px;
+    text-align: left;
+    padding-left: 17px;
+    text-decoration: solid;
+    font-size: 14px;
 }
- 
+
+input[type="text"],
+input[type="password"] {
+    width: 250px;
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #000000; /* lilás */
+    background-color: transparent;
+    outline: none;
+    font-size: 16px;
+    color: #000;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid #58cfcb; /* verde */
+    transition: border-bottom 0.3s;
+}
+
+
+
 
 
 

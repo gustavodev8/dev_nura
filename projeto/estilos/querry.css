@@ -4,25 +4,35 @@
 
     section#logins {
         width: 650px;
-        height: 450px;
+        height: 381px;
 
     }
 
     section > div#imagem {
         float: left;
-        width: 48%;
+        width: 45%;
         height: 100%;
+        background-position: left -30px;
+        background-image: url(../logo\ NURA\ TABLET.jpeg);
+        background-repeat: no-repeat;
         border-top-right-radius: none ;
         border-bottom-left-radius: 15px;
     }
 
     section#logins > div#text {
-        padding-top: 68px;
+        padding-top: 37px;
         padding-left: 9px;
         float: left;
-        width: 335px;
-        padding-bottom: 70px;
+        width: 334px;
+        padding-bottom: 15px;
     }
+
+
+
+    /* 
+
+ICONES
+
     i#senhaa {
         position: absolute;
         left: 305px;
@@ -37,15 +47,30 @@
         padding-bottom: 5px;
         font-size: 30px;
     }
-    
+
+    */
 
     section > footer > p{
-        text-align: center;
+        text-align: left;
+        padding-left: 9px;
+        
 
     }
     form > p {
         padding-bottom: 15px;
     }
 }
-    
+    footer {
+    padding-top: 2px;
+    text-align: left;
+    padding-left: 9px;
+    text-decoration: solid;
+    font-size: 14px;
+}
+
+div#text > p {
+    font-size: 18px;
+    line-height: 25px;
+    padding-bottom: 0px;
+}
 
