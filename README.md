@@ -1,5 +1,8 @@
 # projeto_login
 
-                <p> file:///C:/Users/Pichau/Documents/docs%20nura/projeto_login/projeto/indes.html </p>
+Bem-vindo ao Projeto Nura! 🚀
+Aqui no GitHub você é livre para explorar, modificar e contribuir com o código — mas sempre com consciência e responsabilidade. 💡
+
+SITE ORIGINAL NO AR: https://gustavodev8.github.io/projeto_login/projeto/indes
                 
  
