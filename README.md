@@ -1,4 +1,4 @@
-# projeto_login
+# projeto_nura
 
 Bem-vindo ao Projeto Nura! 🚀
 Aqui no GitHub você é livre para explorar, modificar e contribuir com o código — mas sempre com consciência e responsabilidade. 💡
