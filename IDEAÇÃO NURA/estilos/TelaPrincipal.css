@@ -1,0 +1,25 @@
+@charset "utf-8";
+    body {
+      background-color: #f2f2f2;
+    }
+    .navbar {
+    background-image: linear-gradient(45deg, #5f2c82, #49a09d);
+    }
+    .navbar-brand, .nav-link {
+      color: white !important;
+    }
+    .hero {
+      background-color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .card h5 {
+      color: #0078d7;
+    }
+    footer {
+      background-color: #f3f3f3;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }

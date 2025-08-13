@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajuda e Aprendizado – Meu Navegador</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="estilos/TelaPrincipal.css">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">Nura.ia</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Privacidade</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Personalizar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Problemas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Mobile</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Bem-vindo a sua Agenda </h1>
+      <p class="lead">Organize sua rotina, gerencie compromissos e explore dicas para otimizar seu dia com a Agenda Digital.</p>
+    </div>
+  </section>
+
+  <!-- Área de Tarefas -->
+<section class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Minhas tarefas</h2>
+    <button class="btn btn-primary" onclick="document.getElementById('blocoTarefas').classList.toggle('d-none')">
+      + Adicionar Tarefas
+    </button>
+  </div>
+  <div id="blocoTarefas" class="d-none">
+    <textarea class="form-control" rows="5" placeholder="Escreva suas tarefas aqui..."></textarea>
+    <button class="btn btn-success mt-2">Salvar</button>
+  </div>
+</section>
+
+  <!-- Cards Section -->
+  <section class="container my-5">
+    <h2 class="mb-4">Tópicos populares</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/300x150?text=Navegador" class="card-img-top" alt="Sua Agenda">
+          <div class="card-body">
+            <h5 class="card-title">Conheça a Sua Agenda</h5>
+            <p class="card-text">Descubra recursos e funcionalidades úteis.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/300x150?text=Sincronização" class="card-img-top" alt="Sincronizar">
+          <div class="card-body">
+            <h5 class="card-title">Sincronizar Dispositivos</h5>
+            <p class="card-text">Mantenha seus dados atualizados em todos os dispositivos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/300x150?text=Acessibilidade" class="card-img-top" alt="Acessibilidade">
+          <div class="card-body">
+            <h5 class="card-title">Acessibilidade</h5>
+            <p class="card-text">Navegação simplificada para todos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/300x150?text=Tema+Escuro" class="card-img-top" alt="Tema Escuro">
+          <div class="card-body">
+            <h5 class="card-title">Tema Escuro</h5>
+            <p class="card-text">Ative o modo escuro para descansar seus olhos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; Nura – Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
