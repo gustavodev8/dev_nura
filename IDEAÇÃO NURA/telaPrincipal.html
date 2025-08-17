@@ -5,24 +5,13 @@
   <title>Ajuda e Aprendizado – Meu Navegador</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="estilos/TelaPrincipal.css">
-    <link rel="stylesheet" href="estilos/seutema.css">
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-  <button id="toggle-theme">🌙 Alternar Tema</button>
-
-<form id="form-evento">
-  <input type="text" id="evento" placeholder="Novo compromisso">
-  <button type="submit">Adicionar</button>
-</form>
-
-<ul id="lista-eventos"></ul>
-
-
-  <!-- Navbar -->
+  <!-- barra de controle -->
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand" href="#">Nura.ia</a>
@@ -41,7 +30,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- hero section -->
   <section class="hero">
     <div class="container">
       <h1>Bem-vindo a sua Agenda </h1>
@@ -49,7 +38,7 @@
     </div>
   </section>
 
-  <!-- Área de Tarefas -->
+  <!-- area de tarefas -->
 <section class="container my-5">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2 class="mb-0">Minhas tarefas</h2>
@@ -63,7 +52,13 @@
   </div>
 </section>
 
-  <!-- Cards Section -->
+<a class="navbar-brand d-flex align-items-center" href="#">
+  <img src="38b1a4b5-e9b6-404c-a8d5-22835bf37d3d.png" alt="Logo Nura" class="logo-navbar me-2">
+  Nura.ia
+</a>
+
+
+  <!-- cards section -->
   <section class="container my-5">
     <h2 class="mb-4">Tópicos populares</h2>
     <div class="row g-4">
@@ -106,15 +101,14 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- footer -->
   <footer>
     <p>&copy; Nura – Todos os direitos reservados.</p>
   </footer>
 
-  <!-- Bootstrap JS -->
+  <!-- bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="scripts/darkmode.js"></script>
-<script src="scripts/localstorage.js"></script>
-
+  <script src="scripts/localstorage.js"></script>
+  <script src="scripts/tema.js"></script>
 </body>
 </html>
