@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Botão de remover
       const removerBtn = document.createElement("button");
-      removerBtn.textContent = "❌";
+      removerBtn.textContent = "✖️";
       removerBtn.className = "btn btn-sm btn-danger ms-2";
       removerBtn.onclick = () => {
         tarefas.splice(index, 1);
