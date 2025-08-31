@@ -2,8 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const blocoTarefas = document.getElementById("blocoTarefas");
   const textarea = blocoTarefas.querySelector("textarea");
   const salvarBtn = blocoTarefas.querySelector("button");
-  
-  // Cria uma lista visual para exibir tarefas
+  const btnAdicionar = document.getElementById("btnAdicionar"); // botão de adicionar
+
+  // Cria lista visual para exibir tarefas
   let lista = document.createElement("ul");
   lista.classList.add("list-group", "mt-3");
   blocoTarefas.insertAdjacentElement("afterend", lista);
@@ -46,4 +47,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Carrega as tarefas ao abrir a página
   carregarTarefas();
+
+  // ==========================
+  // NOVO: abrir/fechar caixa de adicionar tarefas
+  // ==========================
+  btnAdicionar.addEventListener("click", function () {
+    blocoTarefas.classList.toggle("show"); // adiciona/remover a classe 'show' do CSS
+    if (blocoTarefas.classList.contains("show")) {
+      textarea.focus(); // opcional: foca no textarea ao abrir
+    }
+  });
 });

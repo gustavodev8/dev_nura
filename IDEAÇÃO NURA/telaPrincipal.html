@@ -5,9 +5,6 @@
   <title>Ajuda e Aprendizado – Meu Navegador</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="estilos/TelaPrincipal.css">
-
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -38,24 +35,25 @@
     </div>
   </section>
 
-  <!-- area de tarefas -->
 <section class="container my-5">
-  <div class="d-flex justify-content-between align-items-center mb-3">
+  <div class="d-flex justify-between align-center mb-3">
     <h2 class="mb-0">Minhas tarefas</h2>
-    <button class="btn btn-primary" onclick="document.getElementById('blocoTarefas').classList.toggle('d-none')">
-      + Adicionar Tarefas
+    <button class="btn btn-primary" id="btnAdicionar">
+      + Adicionar Tarefa
     </button>
   </div>
-  <div id="blocoTarefas" class="d-none">
-    <textarea class="form-control" rows="5" placeholder="Escreva suas tarefas aqui..."></textarea>
-    <button class="btn btn-success mt-2">Salvar</button>
+
+  <div id="blocoTarefas" class="tarefa-container">
+    <textarea placeholder="Escreva sua tarefa aqui..."></textarea>
+    <div class="d-flex justify-between mt-2">
+      <button class="btn btn-success" id="btnSalvar">Salvar</button>
+      <button class="btn btn-secondary" id="btnCancelar">Cancelar</button>
+    </div>
   </div>
+
+  <!-- Lista de tarefas será criada pelo JS -->
 </section>
 
-<a class="navbar-brand d-flex align-items-center" href="#">
-  <img src="38b1a4b5-e9b6-404c-a8d5-22835bf37d3d.png" alt="Logo Nura" class="logo-navbar me-2">
-  Nura.ia
-</a>
 
 
   <!-- cards section -->
