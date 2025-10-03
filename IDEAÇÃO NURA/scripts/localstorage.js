@@ -1,60 +1,134 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const blocoTarefas = document.getElementById("blocoTarefas");
-  const textarea = blocoTarefas.querySelector("textarea");
-  const salvarBtn = blocoTarefas.querySelector("button");
-  const btnAdicionar = document.getElementById("btnAdicionar"); // botão de adicionar
+// Aguardar DOM carregar completamente
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // ===== ELEMENTOS DO DOM =====
+  const btnAdicionar = document.getElementById('btnAdicionar');
+  const btnSalvar = document.getElementById('btnSalvar');
+  const btnCancelar = document.getElementById('btnCancelar');
+  const blocoTarefas = document.getElementById('blocoTarefas');
+  const textarea = document.getElementById('textareaTarefa');
+  const listaTarefas = document.getElementById('listaTarefas');
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
 
-  // Cria lista visual para exibir tarefas
-  let lista = document.createElement("ul");
-  lista.classList.add("list-group", "mt-3");
-  blocoTarefas.insertAdjacentElement("afterend", lista);
+  // ===== ARRAY DE TAREFAS =====
+  let tarefas = [];
 
-  // Função para carregar tarefas salvas
-  function carregarTarefas() {
-    const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
-    lista.innerHTML = "";
-    tarefas.forEach((tarefa, index) => {
-      const li = document.createElement("li");
-      li.className = "list-group-item d-flex justify-content-between align-items-center";
-      li.textContent = tarefa;
+  // ===== MENU RESPONSIVO =====
+  menuToggle.addEventListener('click', function() {
+    navMenu.classList.toggle('show');
+  });
 
-      // Botão de remover
-      const removerBtn = document.createElement("button");
-      removerBtn.textContent = "✖️";
-      removerBtn.className = "btn btn-sm btn-danger ms-2";
-      removerBtn.onclick = () => {
-        tarefas.splice(index, 1);
-        localStorage.setItem("tarefas", JSON.stringify(tarefas));
-        carregarTarefas();
+  // ===== MOSTRAR BLOCO DE ADICIONAR TAREFA =====
+  btnAdicionar.addEventListener('click', function() {
+    blocoTarefas.classList.remove('escondido');
+    blocoTarefas.classList.add('visivel');
+    textarea.value = '';
+    textarea.focus();
+  });
+
+  // ===== SALVAR TAREFA =====
+  btnSalvar.addEventListener('click', function() {
+    const textoTarefa = textarea.value.trim();
+    
+    // Validação: verifica se o campo está vazio
+    if (textoTarefa === '') {
+      alert('Por favor, escreva uma tarefa antes de salvar!');
+      return;
+    }
+
+    // Cria objeto da nova tarefa
+    const novaTarefa = {
+      id: Date.now(),           // ID único baseado no timestamp
+      texto: textoTarefa,       // Texto digitado
+      concluida: false          // Inicia como não concluída
+    };
+    
+    // Adiciona ao array
+    tarefas.push(novaTarefa);
+    
+    // Atualiza a interface
+    renderizarTarefas();
+    
+    // Limpa e esconde o formulário
+    textarea.value = '';
+    blocoTarefas.classList.remove('visivel');
+    blocoTarefas.classList.add('escondido');
+  });
+
+  // ===== CANCELAR ADIÇÃO DE TAREFA =====
+  btnCancelar.addEventListener('click', function() {
+    textarea.value = '';
+    blocoTarefas.classList.remove('visivel');
+    blocoTarefas.classList.add('escondido');
+  });
+
+  // ===== RENDERIZAR LISTA DE TAREFAS =====
+  function renderizarTarefas() {
+    // Limpa a lista atual
+    listaTarefas.innerHTML = '';
+    
+    // Se não houver tarefas, mostra mensagem
+    if (tarefas.length === 0) {
+      listaTarefas.innerHTML = '<p class="text-muted text-center">Nenhuma tarefa adicionada ainda.</p>';
+      return;
+    }
+    
+    // Para cada tarefa, cria um elemento na tela
+    tarefas.forEach(function(tarefa) {
+      // Container da tarefa
+      const tarefaDiv = document.createElement('div');
+      tarefaDiv.className = 'list-group-item';
+      
+      // Texto da tarefa
+      const textoSpan = document.createElement('span');
+      textoSpan.textContent = tarefa.texto;
+      
+      // Aplica estilo se estiver concluída
+      if (tarefa.concluida) {
+        textoSpan.style.textDecoration = 'line-through';
+        textoSpan.style.color = '#999';
+      } else {
+        textoSpan.style.textDecoration = 'none';
+        textoSpan.style.color = '#333';
+      }
+      
+      // Container dos botões
+      const botoesDiv = document.createElement('div');
+      botoesDiv.className = 'btn-group';
+      
+      // Botão de concluir/desconcluir
+      const btnConcluir = document.createElement('button');
+      btnConcluir.className = 'btn btn-sm btn-outline-success';
+      btnConcluir.textContent = tarefa.concluida ? '↶' : '✓';
+      btnConcluir.title = tarefa.concluida ? 'Marcar como pendente' : 'Marcar como concluída';
+      btnConcluir.onclick = function() {
+        tarefa.concluida = !tarefa.concluida;
+        renderizarTarefas();
       };
-
-      li.appendChild(removerBtn);
-      lista.appendChild(li);
+      
+      // Botão de excluir
+      const btnExcluir = document.createElement('button');
+      btnExcluir.className = 'btn btn-sm btn-outline-danger';
+      btnExcluir.textContent = '🗑';
+      btnExcluir.title = 'Excluir tarefa';
+      btnExcluir.onclick = function() {
+        // Filtra o array removendo a tarefa com este ID
+        tarefas = tarefas.filter(function(t) {
+          return t.id !== tarefa.id;
+        });
+        renderizarTarefas();
+      };
+      
+      // Monta a estrutura
+      botoesDiv.appendChild(btnConcluir);
+      botoesDiv.appendChild(btnExcluir);
+      
+      tarefaDiv.appendChild(textoSpan);
+      tarefaDiv.appendChild(botoesDiv);
+      
+      listaTarefas.appendChild(tarefaDiv);
     });
   }
-
-  // Evento do botão Salvar
-  salvarBtn.addEventListener("click", function () {
-    const valor = textarea.value.trim();
-    if (valor) {
-      const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
-      tarefas.push(valor);
-      localStorage.setItem("tarefas", JSON.stringify(tarefas));
-      textarea.value = "";
-      carregarTarefas();
-    }
-  });
-
-  // Carrega as tarefas ao abrir a página
-  carregarTarefas();
-
-  // ==========================
-  // NOVO: abrir/fechar caixa de adicionar tarefas
-  // ==========================
-  btnAdicionar.addEventListener("click", function () {
-    blocoTarefas.classList.toggle("show"); // adiciona/remover a classe 'show' do CSS
-    if (blocoTarefas.classList.contains("show")) {
-      textarea.focus(); // opcional: foca no textarea ao abrir
-    }
-  });
+  
 });
