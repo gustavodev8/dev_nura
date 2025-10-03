@@ -1,15 +1,24 @@
 /* ===== VARIÁVEIS ===== */
 :root {
-  --primary: #0d6efd;
-  --primary-hover: #0b5ed7;
+  --primary: #3B8C6E;
+  --primary-hover: #89D99D;
   --success: #198754;
   --success-hover: #157347;
   --dark: #212529;
   --light: #f8f9fa;
   --gray: #6c757d;
-
   --container-width: 1140px;
   --radius: 0.375rem;
+}
+
+
+/* ===== FONTES DO SISTEMA ===== */
+
+@font-face {
+  font-family: 'MinhaFonte';
+  src: url('../estilos/fontes/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* ===== RESET ===== */
@@ -77,6 +86,7 @@ body {
   border: none;
   color: white;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -86,6 +96,10 @@ body {
     background-color: var(--primary);
     padding: 1rem;
     border-radius: var(--radius);
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    z-index: 1000;
   }
 
   .navbar-nav.show {
@@ -97,41 +111,78 @@ body {
   }
 }
 
+/* ===== HERO ===== */
+.hero {
+  background-color: #ffffff;
+  padding: 4rem 1rem;
+  text-align: center;
+  border-radius: var(--radius);
+  margin-top: 1rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-family: 'MinhaFonte', sans-serif;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: var(--gray);
+}
+
 /* ===== CAIXA DE ADICIONAR TAREFA ===== */
 #blocoTarefas {
   background-color: #fff;
   border: 1px solid rgba(0,0,0,0.125);
   border-radius: var(--radius);
-  padding: 1rem;
   margin-top: 1rem;
   box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-/* Quando o botão adicionar é clicado */
-#blocoTarefas.show {
-  max-height: 400px; /* ajuste conforme a necessidade */
+/* Sistema de visibilidade */
+#blocoTarefas.escondido {
+  display: none;
+}
+
+#blocoTarefas.visivel {
+  display: block;
   padding: 1rem;
+  animation: slideDown 0.3s ease;
 }
 
-/* Textarea */
+/* Animação de aparecer */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 #blocoTarefas textarea {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: var(--radius);
   border: 1px solid rgba(0,0,0,0.2);
   font-size: 1rem;
   font-family: inherit;
   resize: vertical;
+  min-height: 100px;
 }
 
-/* Botões Salvar/Remover */
-#blocoTarefas .btn {
-  margin-top: 0.5rem;
+#blocoTarefas textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(59, 140, 110, 0.25);
 }
 
+/* ===== LISTA DE TAREFAS ===== */
 .list-group {
   list-style: none;
   padding-left: 0;
@@ -141,62 +192,31 @@ body {
 .list-group-item {
   background-color: #fff;
   border: 1px solid rgba(0,0,0,0.125);
+  border-left: 4px solid var(--primary);
   border-radius: var(--radius);
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Botão remover */
-.list-group-item .btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
+.list-group-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.15);
 }
 
-.list-group-item .btn-danger:hover {
-  background-color: #c82333;
+.list-group-item span {
+  flex: 1;
+  font-size: 1rem;
+  word-break: break-word;
 }
 
-/* RESPONSIVIDADE */
-@media (max-width: 768px) {
-  #blocoTarefas textarea {
-    font-size: 0.95rem;
-  }
-
-  .list-group-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .list-group-item .btn-danger {
-    margin-top: 0.5rem;
-  }
-}
-
-
-/* ===== HERO ===== */
-.hero {
-  background-color: #e9ecef;
-  padding: 4rem 1rem;
-  text-align: center;
-  border-radius: var(--radius);
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.25rem;
-  color: var(--gray);
+.list-group-item .btn-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 /* ===== BOTÕES ===== */
@@ -210,7 +230,11 @@ body {
   font-size: 1rem;
   border-radius: var(--radius);
   text-decoration: none;
-  transition: background-color 0.2s, border-color 0.2s;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.98);
 }
 
 .btn-primary {
@@ -218,8 +242,10 @@ body {
   background-color: var(--primary);
   border-color: var(--primary);
 }
+
 .btn-primary:hover {
   background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
 }
 
 .btn-success {
@@ -227,8 +253,50 @@ body {
   background-color: var(--success);
   border-color: var(--success);
 }
+
 .btn-success:hover {
   background-color: var(--success-hover);
+  border-color: var(--success-hover);
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: var(--gray);
+  border-color: var(--gray);
+}
+
+.btn-secondary:hover {
+  background-color: #5c636a;
+  border-color: #5c636a;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.btn-outline-success {
+  color: var(--success);
+  background-color: transparent;
+  border-color: var(--success);
+}
+
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  background-color: transparent;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
 }
 
 /* ===== CARDS ===== */
@@ -245,11 +313,12 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .card:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
 }
 
 .card img {
@@ -260,6 +329,20 @@ body {
 
 .card-body {
   padding: 1rem;
+}
+
+.linkinvisi {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.linkinvisi:hover,
+.linkinvisi:focus,
+.linkinvisi:visited,
+.linkinvisi:active {
+  text-decoration: none;
+  color: inherit;
 }
 
 .card-title {
@@ -275,14 +358,34 @@ body {
 
 /* ===== UTILITÁRIOS ===== */
 .text-center { text-align: center; }
+.text-muted { color: var(--gray); }
 .d-flex { display: flex; }
-.justify-between { justify-content: space-between; }
-.align-center { align-items: center; }
-
+.justify-content-between { justify-content: space-between; }
+.align-items-center { align-items: center; }
 .my-3 { margin-top: 1rem; margin-bottom: 1rem; }
 .my-5 { margin-top: 3rem; margin-bottom: 3rem; }
+.my-6 { margin-top: 5px; margin-bottom: 5px; }
+.mb-0 { margin-bottom: 0; }
 .mb-3 { margin-bottom: 1rem; }
 .mb-4 { margin-bottom: 1.5rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+
+
+/* ===== TABELA DE PREÇO ===== */
+
+.tab_preco {
+    height: auto;
+    width: 100%;
+    max-width: 900px;
+    background-image: url(../tabela_preco.png); /* Corrija o caminho */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin: 15px auto 15px auto;
+    min-height: 600px;
+    border: none;
+}
 
 /* ===== FOOTER ===== */
 footer {
@@ -292,7 +395,34 @@ footer {
   padding: 1rem;
   margin-top: 2rem;
 }
+
 footer p {
   margin: 0;
   font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  #blocoTarefas textarea {
+    font-size: 0.95rem;
+  }
+
+  .list-group-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list-group-item .btn-group {
+    margin-top: 0.5rem;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
 }
