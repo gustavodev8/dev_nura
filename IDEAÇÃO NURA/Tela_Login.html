@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Nura.ia</title>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+
+<body>
+    <main>
+        <section id="logins">
+            <div id="imagem"></div>
+            
+            <div id="text">
+                <h1>Bem-vindo de volta</h1>
+                <p class="subtitle">Entre com suas credenciais</p>
+                
+                <form action="Tela_Inicial.html" method="get">
+                    <p id="usu">
+                        <label for="iusuario">Usuário ou E-mail</label>
+                        <input type="text" name="email" id="iusuario" placeholder="Digite seu usuário" required minlength="3">
+                    </p>
+
+                    <p id="sen">
+                        <label for="isenha">Senha</label>
+                        <input type="password" name="senha" id="isenha" placeholder="Digite sua senha" required minlength="8">
+                        <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                    </p>
+
+                    <p id="enviar">
+                        <input type="submit" value="Entrar" id="ienviar">
+                    </p>
+                </form>
+            </div>
+
+            <footer>
+                <p>Ainda não tem uma conta?</p>
+                <a href="Tela_CriaConta.html"><strong>Crie uma gratuitamente</strong></a>
+            </footer>
+        </section>
+    </main>
+
+    <script>
+        // Adiciona efeito de loading ao submeter (opcional)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const btn = document.getElementById('ienviar');
+            btn.classList.add('loading');
+        });
+
+        // Animação suave nos inputs
+        const inputs = document.querySelectorAll('input[type="text"], input[type="password"]');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
