@@ -14,6 +14,20 @@ document.addEventListener('DOMContentLoaded', function() {
   // ===== ARRAY DE TAREFAS =====
   let tarefas = [];
 
+  // ===== CARREGAR TAREFAS DO LOCALSTORAGE =====
+  function carregarTarefas() {
+    const tarefasSalvas = localStorage.getItem('tarefas');
+    if (tarefasSalvas) {
+      tarefas = JSON.parse(tarefasSalvas);
+      renderizarTarefas();
+    }
+  }
+
+  // ===== SALVAR TAREFAS NO LOCALSTORAGE =====
+  function salvarNoStorage() {
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  }
+
   // ===== MENU RESPONSIVO =====
   menuToggle.addEventListener('click', function() {
     navMenu.classList.toggle('show');
@@ -46,6 +60,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Adiciona ao array
     tarefas.push(novaTarefa);
+    
+    // Salva no localStorage
+    salvarNoStorage();
     
     // Atualiza a interface
     renderizarTarefas();
@@ -104,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btnConcluir.title = tarefa.concluida ? 'Marcar como pendente' : 'Marcar como concluída';
       btnConcluir.onclick = function() {
         tarefa.concluida = !tarefa.concluida;
+        salvarNoStorage();
         renderizarTarefas();
       };
       
@@ -117,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tarefas = tarefas.filter(function(t) {
           return t.id !== tarefa.id;
         });
+        salvarNoStorage();
         renderizarTarefas();
       };
       
@@ -130,5 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
       listaTarefas.appendChild(tarefaDiv);
     });
   }
+  
+  // ===== INICIALIZAR: CARREGAR TAREFAS SALVAS =====
+  carregarTarefas();
   
 });
