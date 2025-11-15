@@ -1,16 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nura - Sua Agenda Inteligente</title>
     <link rel="stylesheet" href="estilos/lading.css">
 </head>
+
 <body>
+    <header id="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">N</div>
+                <span class="logo-text">NURA</span>
+            </a>
+
+            <nav>
+                <a href="#funcionalidades">Funcionalidades</a>
+                <a href="#precos">Preços</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+            </nav>
+
+            <div class="header-buttons">
+                <a href="#login" class="btn-login">Entrar</a>
+                <a href="#signup" class="btn-signup">Criar Conta</a>
+            </div>
+
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav>
+            <a href="#funcionalidades">Funcionalidades</a>
+            <a href="#precos">Preços</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <div class="header-buttons">
+            <a href="#login" class="btn-login">Entrar</a>
+            <a href="#signup" class="btn-signup">Criar Conta</a>
+        </div>
+    </div>
     <div class="container">
         <div class="hero">
             <h1>Tudo que você precisa<br><span class="highlight">para crescer</span></h1>
-            <p>Uma plataforma completa para gerenciar seus agendamentos com inteligência artificial e máxima eficiência</p>
+            <p>Uma plataforma completa para gerenciar seus agendamentos com inteligência artificial e máxima eficiência
+            </p>
         </div>
 
         <div class="main-showcase">
@@ -75,4 +118,7 @@
         </div>
     </div>
 </body>
+
+<script src="scripts/anima_ladingpage.js"></script>
+
 </html>

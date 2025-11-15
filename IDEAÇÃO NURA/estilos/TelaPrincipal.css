@@ -1,11 +1,13 @@
-/* ===== VARIÁVEIS ===== */
+/* ===== VARIÁVEIS - TEMA ROXO + VERDE ÁGUA ===== */
 :root {
-  --primary: #49a09d;
-  --primary-dark: #3B8C6E;
-  --primary-light: #89D99D;
-  --primary-gradient: linear-gradient(135deg, #49a09d 0%, #3B8C6E 100%);
-  --success: #49a09d;
-  --success-hover: #3B8C6E;
+  --primary: #667eea;
+  --primary-dark: #764ba2;
+  --primary-light: #8a92e8;
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --accent: #49a09d;
+  --accent-dark: #3B8C6E;
+  --accent-light: #5cb8b4;
+  --accent-gradient: linear-gradient(135deg, #49a09d 0%, #3B8C6E 100%);
   --dark: #2c3e50;
   --light: #ecf0f1;
   --gray: #7f8c8d;
@@ -13,6 +15,8 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-purple: 0 4px 16px rgba(102, 126, 234, 0.2);
+  --shadow-accent: 0 4px 16px rgba(73, 160, 157, 0.2);
   --container-width: 1140px;
   --radius: 12px;
   --radius-sm: 8px;
@@ -36,7 +40,7 @@
 
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
-  background: linear-gradient(to bottom, #ecf0f1 0%, #f8f9fa 100%);
+  background: linear-gradient(135deg, #f0ebff 0%, #e3f8f6 50%, #f0ebff 100%); /* Roxo → Verde água → Roxo */
   color: var(--dark);
   line-height: 1.6;
   min-height: 100vh;
@@ -48,11 +52,12 @@ body {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 20px;
+  animation: fadeIn 0.6s ease;
 }
 
 /* ===== NAVBAR ===== */
 .navbar {
-  background: var(--primary-gradient);
+  background: linear-gradient(135deg, #667eea 0%, #49a09d 50%, #764ba2 100%); /* Roxo → Verde água → Roxo escuro */
   padding: 1rem 1.5rem;
   box-shadow: var(--shadow-md);
   position: sticky;
@@ -79,7 +84,7 @@ body {
 
 .navbar-brand:hover {
   transform: scale(1.05);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
 }
 
 .navbar-nav {
@@ -99,7 +104,7 @@ body {
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.2);
   color: var(--white);
   transform: translateY(-2px);
 }
@@ -125,7 +130,7 @@ body {
   .navbar-nav {
     display: none;
     flex-direction: column;
-    background: var(--primary-gradient);
+    background: linear-gradient(135deg, #667eea 0%, #49a09d 50%, #764ba2 100%);
     padding: 1rem;
     border-radius: var(--radius);
     position: absolute;
@@ -147,7 +152,7 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-  background: var(--white);
+  background: linear-gradient(135deg, #ffffff 0%, #f9f7ff 100%);
   padding: 5rem 2rem;
   text-align: center;
   border-radius: var(--radius);
@@ -164,11 +169,11 @@ body {
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--primary-gradient);
+  background: linear-gradient(90deg, #667eea 0%, #49a09d 50%, #764ba2 100%); /* Roxo → Verde → Roxo */
 }
 
 .hero_tab_preco {
-  background: var(--white);
+  background: linear-gradient(135deg, #ffffff 0%, #f9f7ff 100%);
   padding: 4rem 2rem 2rem;
   text-align: center;
   border-radius: var(--radius);
@@ -185,7 +190,7 @@ body {
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--primary-gradient);
+  background: linear-gradient(90deg, #667eea 0%, #49a09d 50%, #764ba2 100%);
 }
 
 .hero h1 {
@@ -194,10 +199,21 @@ body {
   margin-bottom: 1rem;
   font-family: 'MinhaFonte', sans-serif;
   color: var(--dark);
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  position: relative;
+}
+
+.hero h1::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  margin: 1rem auto 0;
+  border-radius: 2px;
 }
 
 .hero p {
@@ -210,11 +226,11 @@ body {
 
 /* ===== CAIXA DE ADICIONAR TAREFA ===== */
 #blocoTarefas {
-  background: var(--white);
+  background: linear-gradient(135deg, #ffffff 0%, #f9f8ff 100%);
   border: 2px solid var(--primary-light);
   border-radius: var(--radius);
   margin-top: 1.5rem;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-purple);
   transition: var(--transition);
 }
 
@@ -249,12 +265,13 @@ body {
   resize: vertical;
   min-height: 120px;
   transition: var(--transition);
+  background: var(--white);
 }
 
 #blocoTarefas textarea:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(73, 160, 157, 0.1);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
 }
 
 /* ===== LISTA DE TAREFAS ===== */
@@ -267,7 +284,7 @@ body {
 .list-group-item {
   background: var(--white);
   border: 1px solid #e0e0e0;
-  border-left: 5px solid var(--primary);
+  border-left: 5px solid var(--accent); /* Verde água na borda */
   border-radius: var(--radius-sm);
   padding: 1rem 1.25rem;
   display: flex;
@@ -280,8 +297,9 @@ body {
 
 .list-group-item:hover {
   transform: translateX(8px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-accent); /* Sombra verde água */
   border-left-width: 6px;
+  border-left-color: var(--accent-dark);
 }
 
 .list-group-item span {
@@ -339,23 +357,23 @@ body {
   color: var(--white);
   background: var(--primary-gradient);
   border-color: var(--primary);
-  box-shadow: 0 4px 12px rgba(73, 160, 157, 0.3);
+  box-shadow: var(--shadow-purple);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 6px 16px rgba(73, 160, 157, 0.4);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
   transform: translateY(-2px);
 }
 
 .btn-success {
   color: var(--white);
-  background: linear-gradient(135deg, var(--success) 0%, var(--success-hover) 100%);
-  border-color: var(--success);
-  box-shadow: 0 4px 12px rgba(73, 160, 157, 0.3);
+  background: var(--accent-gradient);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-accent);
 }
 
 .btn-success:hover {
-  box-shadow: 0 6px 16px rgba(73, 160, 157, 0.4);
+  box-shadow: 0 6px 20px rgba(73, 160, 157, 0.35);
   transform: translateY(-2px);
 }
 
@@ -376,14 +394,14 @@ body {
 }
 
 .btn-outline-success {
-  color: var(--success);
+  color: var(--accent);
   background-color: transparent;
-  border-color: var(--success);
+  border-color: var(--accent);
 }
 
 .btn-outline-success:hover {
   color: var(--white);
-  background-color: var(--success);
+  background-color: var(--accent);
 }
 
 .btn-outline-danger {
@@ -415,11 +433,29 @@ body {
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
   transform: translateY(-8px);
+  background: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
 }
 
 .card img {
@@ -489,11 +525,12 @@ body {
 
 /* ===== FOOTER ===== */
 footer {
-  background: linear-gradient(135deg, var(--dark) 0%, #34495e 100%);
-  color: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(135deg, #667eea 0%, #49a09d 50%, #764ba2 100%);
+  color: rgba(255, 255, 255, 0.95);
   text-align: center;
   padding: 2rem 1rem;
   margin-top: 4rem;
+  box-shadow: 0 -4px 20px rgba(102, 126, 234, 0.2);
 }
 
 footer p {
@@ -532,7 +569,7 @@ footer p {
   }
 }
 
-/* ===== ANIMAÇÕES EXTRAS ===== */
+/* ===== ANIMAÇÕES ===== */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -540,10 +577,6 @@ footer p {
   to {
     opacity: 1;
   }
-}
-
-.container {
-  animation: fadeIn 0.6s ease;
 }
 
 /* Scroll suave */
